@@ -10,6 +10,7 @@
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
+- **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
 - **AI-Powered**: Enhanced functionalities using OpenAI.
 - **Deployment**: Robust and scalable deployment on AWS S3.
