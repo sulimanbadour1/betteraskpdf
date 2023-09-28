@@ -8,6 +8,7 @@
 
 - **PDF Upload**: Secure and fast file uploading.
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
+- **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
 - **Clerk Auth**: add authentication and user management to your application.
