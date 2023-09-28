@@ -1,6 +1,6 @@
 # Better ask pdf
 
-<img src="/betteraskpdf/src/assets/logo.png" width ="100px">
+<img src="/betteraskpdf/src/assets/logo.png" width ="100px"/>
 
 **Summary**: "Better ask pdf" is a SAAS product designed to empower users by allowing them to upload and interactively engage with PDF files. Leveraging the power of Next.js, Tailwind CSS, NeonDB, Stripe, and OpenAI, this application offers a seamless experience from file upload to information extraction, all while ensuring a modern and responsive design. Deployed on AWS S3 and optimized with Vercel Edge, "Better ask pdf" aims to provide fast, reliable, and efficient service to its users.
 
