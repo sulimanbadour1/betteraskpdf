@@ -9,7 +9,7 @@ export default async function Home() {
   const isAuth = !!userId;
   return (
     <div className="w-screen min-h-screen bg-gradient-to-t from-gray-200 via-gray-300 to-gray-500">
-      <div className="absolute top-1/5 right-1/2 translate-x-1/2 translate-y-1/2 ">
+      <div className="absolute top-1/5 left-1/2 -translate-x-1/2 translate-y-1/2 ">
         <div className="flex flex-col text-center items-center ">
           <Image
             src={logo}
@@ -19,9 +19,10 @@ export default async function Home() {
 
           <div className="flex text-center">
             <h1 className="mr-3 text-5xl font-semibold">Better Ask PDF</h1>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton afterSignOutUrl="/" />{" "}
+            {/* This is the Clerk sign out button. */}
           </div>
-          <div className="flex mt-4">
+          <div className="flex mt-4 mb-4">
             {isAuth && <Button>Go to chats</Button>}
           </div>
           <p className="max-w-xl mt-1 text-lg text-slate-700">
