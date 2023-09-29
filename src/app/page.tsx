@@ -16,6 +16,7 @@ export default async function Home() {
             alt="logo"
             className="flex items-center w-24 mb-4"
           />
+
           <div className="flex text-center">
             <h1 className="mr-3 text-5xl font-semibold">Better Ask PDF</h1>
             <UserButton afterSignOutUrl="/" />
@@ -46,6 +47,9 @@ export default async function Home() {
               </Link>
             )}
           </div>
+          <blockquote className="text-xs mt-8 text-slate-700 italic">
+            "Better Ask PDF: Where Curiosity Meets Clarity."
+          </blockquote>
         </div>
       </div>
     </div>
