@@ -10,6 +10,7 @@
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
+- **shadncn/ui**: Beautifully designed components built with Radix UI and Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
 - **DrizzleORM**: TypeScript ORM for SQL databases designed with maximum type safety in mind.
 - **Clerk Auth**: add authentication and user management to your application.
