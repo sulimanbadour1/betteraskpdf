@@ -4,12 +4,14 @@ import logo from "../assets/logos/logo_png.png"; // Logo is a custom SVG file.
 import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
 import { LogIn } from "lucide-react"; // Lucide is a set of open-source icons.
+import FileUpload from "@/components/FileUpload";
+
 export default async function Home() {
   const { userId } = await auth();
   const isAuth = !!userId;
   return (
     <div className="w-screen min-h-screen bg-gradient-to-t from-gray-200 via-gray-300 to-gray-500">
-      <div className="absolute top-1/5 left-1/2 -translate-x-1/2 translate-y-1/2 ">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
         <div className="flex flex-col text-center items-center ">
           <Image
             src={logo}
@@ -38,7 +40,7 @@ export default async function Home() {
           </p>
           <div className="w-full mt-4">
             {isAuth ? (
-              <h1>file upload component</h1>
+              <FileUpload />
             ) : (
               <Link href="/signin">
                 <Button>

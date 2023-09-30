@@ -6,7 +6,7 @@
 
 ## Features
 
-- **PDF Upload**: Secure and fast file uploading.
+- **PDF Upload**: Secure and fast file uploading using react dropzone.
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
@@ -33,7 +33,7 @@ npm install drizzle-kit
 npx drizzle-kit push:pg
 ```
 
-- To see the live data base it'll open a local host : 4983.
+- To see the live data base it'll open a local host port : 4983.
 
 ```bash
 npx drizzle-kit studio
@@ -44,6 +44,7 @@ npx drizzle-kit studio
 - **AI-Powered**: Enhanced functionalities using OpenAI.
 - **Deployment**: Robust and scalable deployment on AWS S3.
 - **Optimization**: Lightning-fast performance with Vercel Edge.
+- **Retrieval Augmanted Genertation**: a technique that can provide more accurate results to queries than a generative large language model on its own.
 
 ## Prerequisites
 
@@ -57,7 +58,7 @@ npx drizzle-kit studio
 To set up the project, you'll need to install the following packages:
 
 ```bash
-npm install next react react-dom tailwindcss neondb stripe openai
+npm install next react react-dom tailwindcss neondb stripe openai aws-sdk
 ```
 
 ```bash
