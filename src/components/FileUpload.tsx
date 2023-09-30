@@ -50,7 +50,8 @@ const FileUpload = () => {
         }
         mutate(data, {
           onSuccess: (data) => {
-            toast.success(data.message);
+            // toast.success(data.message);
+            console.log(data);
           },
           onError: (error) => {
             // console.log("error", error);
@@ -76,13 +77,13 @@ const FileUpload = () => {
         <div>
           <input {...getInputProps()} />
           {uploading || isLoading ? (
-            <>
+            <div>
               {/* Loading  state */}
               <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
               <p className="mt-2 text-sm text-slate-400">
                 Uploading the files to GPT...
               </p>
-            </>
+            </div>
           ) : (
             <div className="flex items-center justify-between ">
               <Inbox className="w-10 h-10 text-blue-500" />

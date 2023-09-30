@@ -7,7 +7,7 @@
 ## Features
 
 - **PDF Upload**: Secure and fast file uploading using react dropzone.
-- **langchain**: pen source framework to convert Pdf's into text strings by AI and ML utility functions.
+- **langchain**: open source framework to convert Pdf's into text strings by AI and ML utility functions.
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
@@ -105,6 +105,10 @@ npm install react-hot-toast
 
 ```bash
 npm install @pinecone-database/pinecone
+```
+
+```bash
+npm install @pinecone-database/doc-splitter
 ```
 
 - **langchain**
