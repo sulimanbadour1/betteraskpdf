@@ -13,7 +13,7 @@
 - **shadncn/ui**: Beautifully designed components built with Radix UI and Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
 - **DrizzleORM**: TypeScript ORM for SQL databases designed with maximum type safety in mind.
-
+- **React Query**: data-fetching and state management library for React applications that simplifies fetching, caching, and updating data.
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
 - **AI-Powered**: Enhanced functionalities using OpenAI.
@@ -48,6 +48,10 @@ npm install pg
 ```
 
 ```bash
+npm install @neondatabase/serverless
+```
+
+```bash
 npm install drizzle-orm
 ```
 
@@ -67,8 +71,10 @@ npx drizzle-kit push:pg
 npx drizzle-kit studio
 ```
 
+- **React Query**
+
 ```bash
-npm install @neondatabase/serverless
+npm install @tanstack/react-query
 ```
 
 ## DataBase Models
