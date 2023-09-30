@@ -7,6 +7,7 @@
 ## Features
 
 - **PDF Upload**: Secure and fast file uploading using react dropzone.
+- **langchain**: pen source framework that lets software developers working with artificial intelligence (AI) and its machine learning subset combine large language models with other external components to develop LLM-powered applications.
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
@@ -98,6 +99,18 @@ npm install axios
 
 ```bash
 npm install react-hot-toast
+```
+
+- **PINECONE DB**
+
+```bash
+npm install @pinecone-database/pinecone
+```
+
+- **langchain**
+
+```bash
+npm install langchain
 ```
 
 ## DataBase Models
