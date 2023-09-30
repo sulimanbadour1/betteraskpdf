@@ -77,6 +77,18 @@ npx drizzle-kit studio
 npm install @tanstack/react-query
 ```
 
+- **Axios**
+
+```bash
+npm install axios
+```
+
+- **React Hot Toast**
+
+```bash
+npm install react-hot-toast
+```
+
 ## DataBase Models
 
 ### **Table: `chats`**

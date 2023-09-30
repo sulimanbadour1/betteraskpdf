@@ -16,15 +16,17 @@ export default async function Home() {
           <Image
             src={logo}
             alt="logo"
-            className="flex items-center w-24 mb-4"
+            className="flex items-center w-24 mb-8"
           />
 
           <div className="flex text-center">
             <h1 className="mr-3 text-5xl font-semibold">Better Ask PDF</h1>
-            <UserButton afterSignOutUrl="/" />{" "}
-            {/* This is the Clerk sign out button. */}
+            <div>
+              <UserButton afterSignOutUrl="/" />
+              {/* This is the Clerk sign out button. */}
+            </div>
           </div>
-          <div className="flex mt-4 mb-4">
+          <div className="flex mt-6 mb-6">
             {isAuth && <Button>Go to chats</Button>}
           </div>
           <p className="max-w-xl mt-1 text-lg text-slate-700">
