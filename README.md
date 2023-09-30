@@ -23,6 +23,10 @@ npm install @neondatabase/serverless
 npm install drizzle-orm
 ```
 
+```bash
+npm install drizzle-kit
+```
+
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
 - **AI-Powered**: Enhanced functionalities using OpenAI.
@@ -43,3 +47,30 @@ To set up the project, you'll need to install the following packages:
 ```bash
 npm install next react react-dom tailwindcss neondb stripe openai
 ```
+
+```bash
+npm install dotenv
+```
+
+## DataBase Models
+
+### **Table: `chats`**
+
+| Column Name | Data Type    | Constraints             |
+| ----------- | ------------ | ----------------------- |
+| id          | serial       | primary key             |
+| pdfName     | text         | not null                |
+| pdfUrl      | text         | not null                |
+| createdAt   | timestamp    | not null, default now() |
+| userId      | varchar(256) | not null                |
+| fileKey     | text         | not null                |
+
+### **Table: `messages`**
+
+| Column Name | Data Type      | Constraints                    |
+| ----------- | -------------- | ------------------------------ |
+| id          | serial         | primary key                    |
+| chatId      | integer        | not null, references chats(id) |
+| content     | text           | not null                       |
+| createdAt   | timestamp      | not null, default now()        |
+| role        | userSystemEnum | not null                       |
