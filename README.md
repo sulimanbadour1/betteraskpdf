@@ -7,7 +7,7 @@
 ## Features
 
 - **PDF Upload**: Secure and fast file uploading using react dropzone.
-- **langchain**: pen source framework that lets software developers working with artificial intelligence (AI) and its machine learning subset combine large language models with other external components to develop LLM-powered applications.
+- **langchain**: pen source framework to convert Pdf's into text strings by AI and ML utility functions.
 - **Interactive Engagement**: Extract and interact with content from uploaded PDFs.
 - **Lucide react** :A Lucide icon library package for React applications.
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
