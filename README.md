@@ -41,7 +41,7 @@ npm install dotenv
 ```
 
 ```bash
-npm install bg
+npm install pg
 ```
 
 ```bash
