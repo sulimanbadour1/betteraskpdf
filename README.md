@@ -12,7 +12,17 @@
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
 - **shadncn/ui**: Beautifully designed components built with Radix UI and Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
+
+```bash
+npm install @neondatabase/serverless
+```
+
 - **DrizzleORM**: TypeScript ORM for SQL databases designed with maximum type safety in mind.
+
+```bash
+npm install drizzle-orm
+```
+
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
 - **AI-Powered**: Enhanced functionalities using OpenAI.
