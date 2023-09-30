@@ -21,6 +21,7 @@
 - **Optimization**: Lightning-fast performance with Vercel Edge.
 - **AI Retrieval Augmanted Genertation**: a technique that can provide more accurate results to queries than a generative large language model on its own.
 - **Pinecone** is a cloud-based vector database that offers various features and benefits to the infrastructure community: Fast and fresh vector search: Pinecone provides ultra-low query latency, even with billions of items. This means that users will always get a great experience, even when searching large datasets.
+  <img src="https://github.com/sulimanbadour1/betteraskpdf/blob/master/src/assets/rag%20info/Rag_info.png?raw=true" width="400" alt="sitelogo">
 
 ## Prerequisites
 
