@@ -21,6 +21,17 @@
 - **Optimization**: Lightning-fast performance with Vercel Edge.
 - **AI Retrieval Augmanted Genertation**: a technique that can provide more accurate results to queries than a generative large language model on its own.
 - **Pinecone** is a cloud-based vector database that offers various features and benefits to the infrastructure community: Fast and fresh vector search: Pinecone provides ultra-low query latency, even with billions of items. This means that users will always get a great experience, even when searching large datasets.
+
+## Pinecone Terminology
+
+### **1. Index**
+
+An index in Pinecone refers to a database specifically designed to store a myriad of variables. It serves as the backbone for efficient data retrieval and storage, ensuring that operations are performed swiftly and accurately.
+
+### **2. NameSpace**
+
+A NameSpace in Pinecone is essentially a segmentation mechanism used for each PDF vector space. By segmenting the vector space, Pinecone ensures organized storage and efficient retrieval of vectors, allowing for better scalability and management of data.
+
 - **How to segment the pdf files**
   <img src="https://github.com/sulimanbadour1/betteraskpdf/blob/master/src/assets/rag%20info/Rag_info.png?raw=true" width="800" alt="sitelogo">
 
