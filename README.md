@@ -27,6 +27,18 @@ npm install drizzle-orm
 npm install drizzle-kit
 ```
 
+- To push the Schema to the neon data base
+
+```bash
+npx drizzle-kit push:pg
+```
+
+- To see the live data base it'll open a local host : 4983.
+
+```bash
+npx drizzle-kit studio
+```
+
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
 - **AI-Powered**: Enhanced functionalities using OpenAI.
@@ -50,6 +62,10 @@ npm install next react react-dom tailwindcss neondb stripe openai
 
 ```bash
 npm install dotenv
+```
+
+```bash
+npm install bg
 ```
 
 ## DataBase Models
