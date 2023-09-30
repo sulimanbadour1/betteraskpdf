@@ -12,32 +12,7 @@
 - **Stylish Design**: Modern UI/UX with Tailwind CSS.
 - **shadncn/ui**: Beautifully designed components built with Radix UI and Tailwind CSS.
 - **Database Integration**: Efficient data management with NeonDB.
-
-```bash
-npm install @neondatabase/serverless
-```
-
 - **DrizzleORM**: TypeScript ORM for SQL databases designed with maximum type safety in mind.
-
-```bash
-npm install drizzle-orm
-```
-
-```bash
-npm install drizzle-kit
-```
-
-- To push the Schema to the neon data base
-
-```bash
-npx drizzle-kit push:pg
-```
-
-- To see the live data base it'll open a local host port : 4983.
-
-```bash
-npx drizzle-kit studio
-```
 
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
@@ -67,6 +42,30 @@ npm install dotenv
 
 ```bash
 npm install bg
+```
+
+```bash
+npm install drizzle-orm
+```
+
+```bash
+npm install drizzle-kit
+```
+
+- To push the Schema to the neon data base
+
+```bash
+npx drizzle-kit push:pg
+```
+
+- To see the live data base it'll open a local host port : 4983.
+
+```bash
+npx drizzle-kit studio
+```
+
+```bash
+npm install @neondatabase/serverless
 ```
 
 ## DataBase Models
