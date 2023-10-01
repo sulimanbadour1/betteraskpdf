@@ -1,4 +1,4 @@
-import { Pinecone, PineconeRecord } from "@pinecone-database/pinecone";
+import { Pinecone, PineconeRecord, Vector, utils as PineconeUtils, PineconeClient } from "@pinecone-database/pinecone";
 import { downloadFromS3 } from "./s3-server";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import md5 from "md5";
@@ -10,13 +10,23 @@ import { getEmbeddings } from "./embeddings";
 import { convertToAscii } from "./utils";
 
 
+let pinecone: Pinecone | any;
 
 
-export const getPineconeClient = () => {
-    return new Pinecone({
-        environment: process.env.PINECONE_ENVIRONMENT!,
-        apiKey: process.env.PINECONE_API_KEY!,
-    });
+export const getPineconeClient = async () => {
+    if (!pinecone) {
+        pinecone = new Pinecone()
+        await pinecone.init({
+            environment: process.env.PINECONE_ENVIRONMENT!,
+            apiKey: process.env.PINECONE_API_KEY!,
+
+        })
+    }
+    return pinecone;
+    // return new Pinecone({
+    //     environment: process.env.PINECONE_ENVIRONMENT!,
+    //     apiKey: process.env.PINECONE_API_KEY!,
+    // });
 };
 
 type PDFPage = {
@@ -44,12 +54,20 @@ export async function loadS3IntoPinecone(fileKey: string) {
     const vectors = await Promise.all(documents.flat().map(embedDocument));
 
     // 4. upload to pinecone
+    // const client = await getPineconeClient();
+    // const pineconeIndex = client.index("better-ask-pdf");
+    // const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+
+    // console.log("inserting vectors into pinecone");
+    // await namespace.upsert(vectors);
+
     const client = await getPineconeClient();
     const pineconeIndex = client.index("better-ask-pdf");
-    const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
-
     console.log("inserting vectors into pinecone");
-    await namespace.upsert(vectors);
+    const namespace = convertToAscii(fileKey);
+    PineconeUtils.chunkedUpsert(pineconeIndex, vectors, namespace, 10);
+
+
 
     return documents[0];
 }
@@ -66,9 +84,9 @@ async function embedDocument(doc: Document) {
                 text: doc.metadata.text,
                 pageNumber: doc.metadata.pageNumber,
             },
-        } as PineconeRecord;
+        } as Vector;
     } catch (error) {
-        console.log("error embedding document", error);
+        console.log("Error in embedding the doc", error);
         throw error;
     }
 }
