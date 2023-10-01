@@ -1,66 +1,53 @@
-import { PineconeClient, Vector, utils as PineconeUtils } from '@pinecone-database/pinecone';
-import { downloadFromS3 } from './s3-server';
+import { Pinecone, PineconeRecord } from "@pinecone-database/pinecone";
+import { downloadFromS3 } from "./s3-server";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { Document, RecursiveCharacterTextSplitter } from "@pinecone-database/doc-splitter";
-import { getEmbeddings } from './embeddings';
 import md5 from "md5";
-import { convertToAscii } from './utils';
+import {
+    Document,
+    RecursiveCharacterTextSplitter,
+} from "@pinecone-database/doc-splitter";
+import { getEmbeddings } from "./embeddings";
+import { convertToAscii } from "./utils";
 
-// 1- Create a pinecone client
-
-let pinecone: PineconeClient | null = null;
-
-export const getPineconeClient = async () => {
-    if (!pinecone) {
-        pinecone = new PineconeClient()
-        await pinecone.init({
-            environment: process.env.PINECONE_ENVIRONMENT!,
-            apiKey: process.env.PINECONE_API_KEY!,
-        }
-
-        )
-    }
-    return pinecone;
-}
-
+export const getPineconeClient = () => {
+    return new Pinecone({
+        environment: process.env.PINECONE_ENVIRONMENT!,
+        apiKey: process.env.PINECONE_API_KEY!,
+    });
+};
 
 type PDFPage = {
     pageContent: string;
     metadata: {
         loc: { pageNumber: number };
-    }
-}
+    };
+};
 
-
-// The heart of the app - load the pdf into pinecone
-//  1- Vectorize the pdf into  vectors
-export async function loadS3IntoPinecone(
-    file_key: string,
-) {
-    // 1- Get the pdf from s3
-    console.log("Loading pdf from s3 ...");
-    const file_name = await downloadFromS3(file_key);
+export async function loadS3IntoPinecone(fileKey: string) {
+    // 1. obtain the pdf -> downlaod and read from pdf
+    console.log("downloading s3 into file system");
+    const file_name = await downloadFromS3(fileKey);
     if (!file_name) {
-        throw new Error("Could not download file from s3");
+        throw new Error("could not download from s3");
     }
+    console.log("loading pdf into memory" + file_name);
     const loader = new PDFLoader(file_name);
-    const pages = (await loader.load() as PDFPage[]);
+    const pages = (await loader.load()) as PDFPage[];
 
-    // 2- split and segment the pdf into pages
-    // return pages;
+    // 2. split and segment the pdf
     const documents = await Promise.all(pages.map(prepareDocument));
 
-    // 3- vectorize the pdf and embed individual slices of docs
+    // 3. vectorise and embed individual documents
     const vectors = await Promise.all(documents.flat().map(embedDocument));
 
-    // 4- load the vectors into pinecone
+    // 4. upload to pinecone
     const client = await getPineconeClient();
-    const pineconeIndex = client.Index('better-ask-pdf');
+    const pineconeIndex = await client.index("chatpdf");
+    const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
-    console.log("Loading vectors into pinecone ...");
-    const namespace = convertToAscii(file_key); //  to make the namespace ascii compatible
+    console.log("inserting vectors into pinecone");
+    await namespace.upsert(vectors);
 
-    PineconeUtils.chunkedUpsert(pineconeIndex, vectors, namespace, 10);
     return documents[0];
 }
 
@@ -68,47 +55,39 @@ async function embedDocument(doc: Document) {
     try {
         const embeddings = await getEmbeddings(doc.pageContent);
         const hash = md5(doc.pageContent);
+
         return {
             id: hash,
             values: embeddings,
             metadata: {
                 text: doc.metadata.text,
                 pageNumber: doc.metadata.pageNumber,
-            }
-        } as Vector;
-
+            },
+        } as PineconeRecord;
     } catch (error) {
-
-        console.log("Error in embedDocument: ", error);
+        console.log("error embedding document", error);
         throw error;
     }
 }
 
-
-
-
-
-
 export const truncateStringByBytes = (str: string, bytes: number) => {
     const enc = new TextEncoder();
-    return new TextDecoder('utf-8').decode(enc.encode(str).slice(0, bytes));
-}
+    return new TextDecoder("utf-8").decode(enc.encode(str).slice(0, bytes));
+};
+
 async function prepareDocument(page: PDFPage) {
-    let { metadata, pageContent } = page;
-    pageContent = pageContent.replace(/\n/g, " ");
-    //  3- split the page into segments
+    let { pageContent, metadata } = page;
+    pageContent = pageContent.replace(/\n/g, "");
+    // split the docs
     const splitter = new RecursiveCharacterTextSplitter();
     const docs = await splitter.splitDocuments([
-        new Document(
-            {
-                pageContent,
-                metadata: {
-                    pageNumber: metadata.loc.pageNumber,
-                    text: truncateStringByBytes(pageContent, 36000)
-
-                }
-            }
-        )
-    ])
+        new Document({
+            pageContent,
+            metadata: {
+                pageNumber: metadata.loc.pageNumber,
+                text: truncateStringByBytes(pageContent, 36000),
+            },
+        }),
+    ]);
     return docs;
 }
