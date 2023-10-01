@@ -1,5 +1,5 @@
 "use client";
-import { uploadtoS3 } from "@/lib/s3";
+import { uploadToS3 } from "@/lib/s3";
 import { useMutation } from "@tanstack/react-query";
 import { Inbox, Loader2 } from "lucide-react";
 import React from "react";
@@ -33,7 +33,7 @@ const FileUpload = () => {
     onDrop: async (acceptedFiles) => {
       //   console.log(acceptedFiles);
       const file = acceptedFiles[0];
-      if (file.size > 10 * 1024 * 10000) {
+      if (file.size > 10 * 1024 * 1024) {
         toast.error(
           "File size must be less than 10MB, Please uplaod a smaller file."
         );
@@ -44,14 +44,14 @@ const FileUpload = () => {
       }
       try {
         setUploading(true);
-        const data = await uploadtoS3(file);
+        const data = await uploadToS3(file);
         if (!data?.file_key || !data?.file_name) {
           toast.error("Something went wrong, Please try again.");
           // alert("Something went wrong, Please try again.");
           return;
         }
         mutate(data, {
-          onSuccess: (chat_id) => {
+          onSuccess: ({ chat_id }) => {
             // toast.success(data.message);
             toast.success("Chat created successfully.");
             router.push(`/chat/${chat_id}`);

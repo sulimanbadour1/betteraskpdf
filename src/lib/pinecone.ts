@@ -9,6 +9,9 @@ import {
 import { getEmbeddings } from "./embeddings";
 import { convertToAscii } from "./utils";
 
+
+
+
 export const getPineconeClient = () => {
     return new Pinecone({
         environment: process.env.PINECONE_ENVIRONMENT!,
@@ -42,7 +45,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
     // 4. upload to pinecone
     const client = await getPineconeClient();
-    const pineconeIndex = await client.index("chatpdf");
+    const pineconeIndex = client.index("better-ask-pdf");
     const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
     console.log("inserting vectors into pinecone");

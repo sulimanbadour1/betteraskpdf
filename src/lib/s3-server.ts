@@ -7,8 +7,8 @@ export async function downloadFromS3(file_key: string) {
     // 1- Get the pdf from s3
     try {
         AWS.config.update({
-            accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID,
-            secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY,
+            accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID!,
+            secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY!,
         });
         const s3 = new AWS.S3({
             params: {
