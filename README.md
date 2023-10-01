@@ -47,89 +47,37 @@ A NameSpace in Pinecone is essentially a segmentation mechanism used for each PD
 
 To set up the project, you'll need to install the following packages:
 
-```bash
-npm install next react react-dom tailwindcss neondb stripe openai aws-sdk
-```
+- Core Packages:
 
-```bash
-npm install dotenv
-```
+  - `next`
+  - `react`
+  - `react-dom`
+  - `tailwindcss`
+  - `neondb`
+  - `stripe`
+  - `openai`
+  - `aws-sdk`
+  - `dotenv`
+  - `pg`
+  - `@neondatabase/serverless`
+  - `drizzle-orm`
+  - `drizzle-kit`
 
-```bash
-npm install pg
-```
+- Commands:
 
-```bash
-npm install @neondatabase/serverless
-```
+  - Push the Schema to the neon database: `npx drizzle-kit push:pg`
+  - See the live database (opens a localhost port: 4983): `npx drizzle-kit studio`
 
-```bash
-npm install drizzle-orm
-```
-
-```bash
-npm install drizzle-kit
-```
-
-- To push the Schema to the neon data base
-
-```bash
-npx drizzle-kit push:pg
-```
-
-- To see the live data base it'll open a local host port : 4983.
-
-```bash
-npx drizzle-kit studio
-```
-
-- **React Query**
-
-```bash
-npm install @tanstack/react-query
-```
-
-- **Axios**
-
-```bash
-npm install axios
-```
-
-- **React Hot Toast**
-
-```bash
-npm install react-hot-toast
-```
-
-- **PINECONE DB**
-
-```bash
-npm install @pinecone-database/pinecone
-```
-
-```bash
-npm install @pinecone-database/doc-splitter
-```
-
-- **langchain**
-
-```bash
-npm install langchain
-```
-
-- **OpenAI**
-
-```bash
-npm install openai-edge
-
-```
-
-- **md5 JavaScript function for hashing messages with MD5.**
-
-```bash
-npm install md5
-
-```
+- Additional Libraries:
+  - React Query: `@tanstack/react-query`
+  - Axios: `axios`
+  - React Hot Toast: `react-hot-toast`
+  - PINECONE DB:
+    - `@pinecone-database/pinecone`
+    - `@pinecone-database/doc-splitter`
+  - Langchain: `langchain`
+  - OpenAI: `openai-edge`
+  - MD5 JavaScript function for hashing messages: `md5`
 
 ## DataBase Models
 
