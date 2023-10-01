@@ -17,7 +17,7 @@
 - **React Query**: data-fetching and state management library for React applications that simplifies fetching, caching, and updating data.
 - **Clerk Auth**: add authentication and user management to your application.
 - **Payment Gateway**: Seamless payment process with Stripe.
-- **AI-Powered**: Enhanced functionalities using OpenAI.
+- **AI-Powered**: Enhanced functionalities using OpenAI/Edge to integrate with edge.
 - **Deployment**: Robust and scalable deployment on AWS S3.
 - **Optimization**: Lightning-fast performance with Vercel Edge.
 - **AI Retrieval Augmanted Genertation**: a technique that can provide more accurate results to queries than a generative large language model on its own.
@@ -115,6 +115,20 @@ npm install @pinecone-database/doc-splitter
 
 ```bash
 npm install langchain
+```
+
+- **OpenAI**
+
+```bash
+npm install openai-edge
+
+```
+
+- **md5 JavaScript function for hashing messages with MD5.**
+
+```bash
+npm install md5
+
 ```
 
 ## DataBase Models

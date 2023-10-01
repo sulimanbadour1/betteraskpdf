@@ -1,8 +1,10 @@
-import { PineconeClient } from '@pinecone-database/pinecone';
+import { PineconeClient, Vector, utils as PineconeUtils } from '@pinecone-database/pinecone';
 import { downloadFromS3 } from './s3-server';
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Document, RecursiveCharacterTextSplitter } from "@pinecone-database/doc-splitter";
-
+import { getEmbeddings } from './embeddings';
+import md5 from "md5";
+import { convertToAscii } from './utils';
 
 // 1- Create a pinecone client
 
@@ -49,8 +51,37 @@ export async function loadS3IntoPinecone(
     const documents = await Promise.all(pages.map(prepareDocument));
 
     // 3- vectorize the pdf and embed individual slices of docs
+    const vectors = await Promise.all(documents.flat().map(embedDocument));
 
+    // 4- load the vectors into pinecone
+    const client = await getPineconeClient();
+    const pineconeIndex = client.Index('better-ask-pdf');
 
+    console.log("Loading vectors into pinecone ...");
+    const namespace = convertToAscii(file_key); //  to make the namespace ascii compatible
+
+    PineconeUtils.chunkedUpsert(pineconeIndex, vectors, namespace, 10);
+    return documents[0];
+}
+
+async function embedDocument(doc: Document) {
+    try {
+        const embeddings = await getEmbeddings(doc.pageContent);
+        const hash = md5(doc.pageContent);
+        return {
+            id: hash,
+            values: embeddings,
+            metadata: {
+                text: doc.metadata.text,
+                pageNumber: doc.metadata.pageNumber,
+            }
+        } as Vector;
+
+    } catch (error) {
+
+        console.log("Error in embedDocument: ", error);
+        throw error;
+    }
 }
 
 
