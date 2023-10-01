@@ -49,35 +49,35 @@ To set up the project, you'll need to install the following packages:
 
 - Core Packages:
 
-  - `next`
-  - `react`
-  - `react-dom`
-  - `tailwindcss`
-  - `neondb`
-  - `stripe`
-  - `openai`
-  - `aws-sdk`
-  - `dotenv`
-  - `pg`
-  - `@neondatabase/serverless`
-  - `drizzle-orm`
-  - `drizzle-kit`
+  - **`next`**: A React framework that enables server-side rendering and static site generation.
+  - **`react`**: A JavaScript library for building user interfaces.
+  - **`react-dom`**: React package for working with the DOM.
+  - **`tailwindcss`**: A utility-first CSS framework for rapid UI development.
+  - **`neondb`**: A database package specific to the project (assuming based on the name).
+  - **`stripe`**: Library to integrate Stripe payment gateway.
+  - **`openai`**: SDK for interacting with the OpenAI API.
+  - **`aws-sdk`**: AWS SDK for JavaScript, to interact with AWS services.
+  - **`dotenv`**: Module to load environment variables from a `.env` file.
+  - **`pg`**: Non-blocking PostgreSQL client for Node.js.
+  - **`@neondatabase/serverless`**: Serverless integration for NeonDB (assumed based on the name).
+  - **`drizzle-orm`**: An ORM for database interactions (assumed based on the name).
+  - **`drizzle-kit`**: Toolkit related to `drizzle-orm` (assumed based on the name).
 
 - Commands:
 
-  - Push the Schema to the neon database: `npx drizzle-kit push:pg`
-  - See the live database (opens a localhost port: 4983): `npx drizzle-kit studio`
+  - **Push the Schema to the neon database**: `npx drizzle-kit push:pg`
+  - **See the live database (opens a localhost port: 4983)**: `npx drizzle-kit studio`
 
 - Additional Libraries:
-  - React Query: `@tanstack/react-query`
-  - Axios: `axios`
-  - React Hot Toast: `react-hot-toast`
-  - PINECONE DB:
-    - `@pinecone-database/pinecone`
-    - `@pinecone-database/doc-splitter`
-  - Langchain: `langchain`
-  - OpenAI: `openai-edge`
-  - MD5 JavaScript function for hashing messages: `md5`
+  - **`@tanstack/react-query`**: Hooks for fetching, caching, and updating asynchronous data in React.
+  - **`axios`**: Promise-based HTTP client for the browser and Node.js.
+  - **`react-hot-toast`**: Library for adding toast notifications to React apps.
+  - **PINECONE DB**:
+    - **`@pinecone-database/pinecone`**: Core package for Pinecone database (assumed based on the name).
+    - **`@pinecone-database/doc-splitter`**: Document splitter utility for Pinecone (assumed based on the name).
+  - **`langchain`**: Assumed to be a language processing or translation library (based on the name).
+  - **`openai-edge`**: SDK for OpenAI's edge capabilities.
+  - **`md5`**: JavaScript function for hashing messages with MD5.
 
 ## DataBase Models
 
