@@ -37,7 +37,7 @@
     "next": "^13.5.3",
     "openai-edge": "^1.2.2",
     "pdf-parse": "^1.1.1",
-    "pdfjs-dist": "^3.10.111",
+    "pdfjs-dist": "^4.2.67",
     "pg": "^8.11.3",
     "postcss": "8.4.29",
     "react": "18.2.0",
